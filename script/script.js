@@ -20,3 +20,14 @@ const groenten = [
     prijs: 0.7,
   },
 ];
+
+//oef1
+const groentenLijstDiv = document.querySelector("#lijst");
+
+groenten.forEach((groente) => {
+  const groentItem = document.createElement("p");
+  groentItem.innerHTML = groente.naam;
+  groentenLijstDiv.appendChild(groentItem);
+});
+
+//oef2
