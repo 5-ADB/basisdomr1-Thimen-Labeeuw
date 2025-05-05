@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>dropdown lijst</h2>
+    <div class="dropdown">
+      <select id="naam">
+        <option value="1">optie 1</option>
+        <option value="2">optie 2</option>
+        <option value="3">optie 3</option>
+      </select>
+    </div>
+    <h2>checkbox</h2>
+    <div class="checkbox" id="checkboxGroup">
+      <input type="checkbox" name="optie1" id="1" />
+      <input type="checkbox" name="optie2" checked id="2" />
+    </div>
+
+    <script>
+      document.querySelector("#naam").addEventListener("change", (args) => {
+        console.log(args.target.selectedIndex);
+      });
+
+      // voor onderstaande mag je gerust internet gebruiken om op te zoeken wat gebeurt.
+      const checks = document.querySelector("#checkboxGroup").children;
+      Array.from(checks).forEach((element) => {
+        console.log(element.checked);
+      });
+    </script>
+  </body>
+</html>
