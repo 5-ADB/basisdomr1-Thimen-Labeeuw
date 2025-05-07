@@ -27,25 +27,30 @@ const GroentenDiv = document.querySelector("#lijst");
 const kostPrijsP = document.createElement("p");
 document.querySelector("#kostprijs").appendChild(kostPrijsP);
 kostPrijsP.innerHTML = "totaal:";
+let kostprijs = 0;
 
 groenten.forEach((groente) => {
-  let kostprijs = 0.0;
   const groentItem = document.createElement("p");
   const checkBox = document.createElement("input");
   checkBox.type = "checkbox";
   checkBox.value = groente.prijs;
   checkBox.addEventListener("change", () => {
-    if (checkBox.checked) {
-      kostprijs += checkBox.value;
-      console.log(`${groente.prijs} totaal: ${kostprijs}$`);
-      kostPrijsP.innerHTML = `totaal: ${kostprijs}$`;
-    } else {
-      kostprijs -= checkBox.value;
-      console.log(`${groente.prijs} totaal: ${kostprijs}$`);
-      kostPrijsP.innerHTML = `totaal: ${kostprijs}$`;
-    }
+    groenten.forEach((groenteItem) => {
+      if (`${groenteItem.prijs}` == checkBox.value) {
+        if (checkBox.checked) {
+          kostprijs += groenteItem.prijs;
+          console.log(kostprijs);
+          kostprijs = parseFloat(kostprijs.toFixed(2));
+        } else {
+          console.log(kostprijs);
+          kostprijs -= groenteItem.prijs;
+          kostprijs = parseFloat(kostprijs.toFixed(2));
+        }
+      }
+    });
+    kostPrijsP.innerHTML = `totaal: €${kostprijs}`;
   });
-  groentItem.innerHTML = `${groente.naam}, ${groente.prijs}0$`;
+  groentItem.innerHTML = `${groente.naam}, €${groente.prijs}`;
   groentItem.appendChild(checkBox);
   GroentenDiv.appendChild(groentItem);
 });

@@ -37,5 +37,5 @@ groenten.forEach((groente) => {
 });
 
 Dropdown.addEventListener("change", () => {
-  PrijsText.innerHTML = `prijs: ${Dropdown.value}0$`;
+  PrijsText.innerHTML = `prijs: ${Dropdown.value}0`;
 });
